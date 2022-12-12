@@ -1,26 +1,29 @@
+
 import Head from 'next/head'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../styles/Home.module.css'
 
-export default function Home({ countries }) {
+
+export default function Home({ continents }) {
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Countries Graphql</title>
+        <title>Continents</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Countries
+          CONTINENTS
         </h1>
 
         <div className={styles.grid}>
-          {countries.map(launch => {
+          {continents.map(continent => {
             return (
               <>
-              <div>{launch.name}</div>
-              <div className={styles.emoji}>{launch.emoji} -</div>
+              <div>{continent.code} {continent.name}</div>
+              <div>------</div>
               </>
             );
           })}
@@ -39,18 +42,19 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`
-      query GetCountries {
-        countries {
-          name
-          emoji
-        }
+      query GetContinents {
+            continents {
+              code
+              name
+            }
     }
     `
-  });
+  }
+  )
 
   return {
     props: {
-      countries: data.countries
+      continents: data.continents
     }
   }
 }
