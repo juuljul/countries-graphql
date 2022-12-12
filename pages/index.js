@@ -22,7 +22,7 @@ export default function Home({ continents }) {
           {continents.map(continent => {
             return (
               <>
-              <Link href={continent.code}>
+              <Link href={`continent/${continent.code}`}>
               <div>{continent.code} {continent.name}</div>
               </Link>
               <div>------</div>
