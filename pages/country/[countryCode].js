@@ -44,32 +44,6 @@ export default function Country({ country }) {
           </div>
 
           </div>
-            
-          {/* <div className="flex justify-center items-center mb-5">
-            <FaCity className="text-3xl"/>
-            <div className="text-3xl pl-5">{country.capital}</div>
-          </div>
-
-          <div className="flex justify-center items-center mb-5 pr-4">
-            <GrCurrency className="text-3xl"/>
-            <div className="text-3xl pl-5">{country.currency}</div>
-          </div>
-
-          <div className="flex justify-center items-center mb-5 pr-8">
-            <BsFillTelephoneFill className="text-3xl"/>
-            <div className="text-3xl pl-5">{country.phone}</div>
-          </div>
-
-          <div className="flex justify-center items-center mb-5">
-            <TbMessageLanguage className="text-3xl"/>
-            {country.languages.map(language => {
-            return (
-              <div className="text-3xl pl-5 flex flex-col">
-              <div >{language.name}</div>
-              </div>
-            );
-            })}
-          </div> */}
         
 
           </div>

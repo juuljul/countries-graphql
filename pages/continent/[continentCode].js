@@ -3,34 +3,28 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
-export default function Continents({ continent, continentCode }) {
+export default function Continents({ continent }) {
 
   return (
-    <div className={styles.container}>
+    <div className="p-5">
       <Head>
         <title>Countries</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          COUNTRIES
-        </h1>
-        <h1>{continentCode}</h1>
 
-        <div className={styles.grid}>
+        <ul className="flex justify-between flex-wrap text-xl text-slate-200">
           {continent.countries.map(country => {
             return (
-              <>
-              <Link href={`../country/${country.code}`}>
-              <div>{country.code} {country.name}</div>
+              <li className="my-9 mx-5 w-1/4">
+              <Link href={`../country/${country.code}`} className="flex flex-row justify-center p-4 bg-gray-200 bg-slate-800 rounded-xl">
+              <div className="pr-5">{country.name}</div>
+              <div>{country.emoji}</div>
               </Link>
-              <div>-------</div>
-              </>
+              </li>
             );
           })}
-        </div>
-      </main>
+        </ul>
     </div>
   )
 }
@@ -50,6 +44,7 @@ export async function getStaticProps({params}) {
     continent(code: $code){
       name
       countries {
+        emoji
         name
         code
       }
@@ -67,7 +62,6 @@ export async function getStaticProps({params}) {
   return {
     props: {
       continent: data.continent,
-      continentCode: continentCode 
     }
   }
 }

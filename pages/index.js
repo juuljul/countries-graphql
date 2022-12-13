@@ -8,17 +8,13 @@ import { BiWorld } from 'react-icons/bi';
 
 export default function Home({ continents }) {
   return (
-    <div className={styles.container}>
+    <div className="p-5">
       <Head>
         <title>Continents</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          CONTINENTS
-        </h1>
-
+{/*       
         <div className={styles.grid}>
           {continents.map(continent => {
             return (
@@ -30,8 +26,19 @@ export default function Home({ continents }) {
               </>
             );
           })}
-        </div>
-      </main>
+        </div> */}
+
+        <ul className="flex justify-around flex-wrap text-xl text-slate-200 mt-28">
+          {continents.map(continent => {
+            return (
+              <li className="my-9 mx-5 w-1/4">
+              <Link href={`continent/${continent.code}`} className="flex flex-row justify-center p-4 bg-gray-200 bg-slate-800 rounded-xl ">
+              <div>{continent.name}</div>
+              </Link>
+              </li>
+            );
+          })}
+        </ul>
 
     </div>
   )
