@@ -2,6 +2,10 @@ import Head from 'next/head'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../../styles/Home.module.css'
 
+import { GrCurrency } from 'react-icons/gr';
+import { FaCity } from 'react-icons/fa';
+import { BsFillTelephoneFill } from 'react-icons/bs';
+import { TbMessageLanguage } from 'react-icons/tb';
 
 export default function Country({ country }) {
 
@@ -14,20 +18,26 @@ export default function Country({ country }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          COUNTRY
+        {country.emoji}
         </h1>
-        <h1>{country.name}</h1>
+        <h1>{country.native}
+        { country.name!=country.native && <span> ({country.name}) </span>}
+        </h1>
 
         <div className={styles.grid}>
-              <div>{country.native}</div>
+            <FaCity/>
               <div>{country.capital}</div>
-              <div>{country.emoji}</div>
+        <BsFillTelephoneFill/>
+
+              <div>{country.phone}</div>
+             <GrCurrency/>
+
               <div>{country.currency}</div>
           {country.languages.map(language => {
             return (
               <>
+              <TbMessageLanguage/>
               <div>{language.name}</div>
-              <div>----</div>
               </>
             );
           })}
@@ -55,6 +65,7 @@ export async function getStaticProps({params}) {
       capital
       emoji
       currency
+      phone
       languages {
         code
         name
