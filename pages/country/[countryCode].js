@@ -1,49 +1,83 @@
 import Head from 'next/head'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import styles from '../../styles/Home.module.css'
-
-import { GrCurrency } from 'react-icons/gr';
-import { FaCity } from 'react-icons/fa';
+import { FaCity, FaMoneyBillWave } from 'react-icons/fa';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { TbMessageLanguage } from 'react-icons/tb';
+
 
 export default function Country({ country }) {
 
   return (
-    <div className={styles.container}>
+    <div className="p-5">
       <Head>
         <title>Country</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <div className="flex flex-col items-center">
+      
+      <div className="bg-gray-200 px-20 py-9 w-fit mt-8 bg-slate-800 rounded-xl text-slate-200">
+        <div className="text-center text-9xl">
         {country.emoji}
-        </h1>
-        <h1>{country.native}
+        </div>
+        <h1 className="text-center text-5xl">{country.native}
         { country.name!=country.native && <span> ({country.name}) </span>}
         </h1>
 
-        <div className={styles.grid}>
-            <FaCity/>
-              <div>{country.capital}</div>
-        <BsFillTelephoneFill/>
+          <div className="flex justify-center">
+          <div className="flex flex-col items-end ml-9 text-2xl">
+            <div className='mt-7'><FaCity/></div>
+            <div className='mt-8'><FaMoneyBillWave/></div>
+            <div className='mt-8'><BsFillTelephoneFill/></div>
+            <div className='mt-7'><TbMessageLanguage/></div>
+          </div>
+          <div className="flex flex-col items-start pl-4 text-2xl">
+            <div className="pl-5 mt-6">{country.capital}</div>
+            <div className="pl-5 mt-6">{country.currency}</div>
+            <div className="pl-5 mt-6">{country.phone}</div>
+            <div className="pl-5 mt-5">
+            {country.languages.map(language => {
+              return (
+                <div >{language.name}</div>
+              );})}
+            </div>
+          </div>
 
-              <div>{country.phone}</div>
-             <GrCurrency/>
+          </div>
+            
+          {/* <div className="flex justify-center items-center mb-5">
+            <FaCity className="text-3xl"/>
+            <div className="text-3xl pl-5">{country.capital}</div>
+          </div>
 
-              <div>{country.currency}</div>
-          {country.languages.map(language => {
+          <div className="flex justify-center items-center mb-5 pr-4">
+            <GrCurrency className="text-3xl"/>
+            <div className="text-3xl pl-5">{country.currency}</div>
+          </div>
+
+          <div className="flex justify-center items-center mb-5 pr-8">
+            <BsFillTelephoneFill className="text-3xl"/>
+            <div className="text-3xl pl-5">{country.phone}</div>
+          </div>
+
+          <div className="flex justify-center items-center mb-5">
+            <TbMessageLanguage className="text-3xl"/>
+            {country.languages.map(language => {
             return (
-              <>
-              <TbMessageLanguage/>
-              <div>{language.name}</div>
-              </>
+              <div className="text-3xl pl-5 flex flex-col">
+              <div >{language.name}</div>
+              </div>
             );
-          })}
-        </div>
-      </main>
+            })}
+          </div> */}
+        
+
+          </div>
+
+        
     </div>
+    </div>
+
   )
 }
 
