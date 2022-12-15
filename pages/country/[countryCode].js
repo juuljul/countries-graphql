@@ -3,6 +3,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { FaCity, FaMoneyBillWave } from 'react-icons/fa';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { TbMessageLanguage } from 'react-icons/tb';
+import Header from '../Header'
 
 
 export default function Country({ country }) {
@@ -13,7 +14,7 @@ export default function Country({ country }) {
         <title>Country</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header/>
       <div className="flex flex-col items-center">
       
       <div className="bg-gray-200 px-20 py-9 w-fit mt-8 bg-slate-800 rounded-xl text-slate-200">
@@ -42,13 +43,8 @@ export default function Country({ country }) {
               );})}
             </div>
           </div>
-
           </div>
-        
-
           </div>
-
-        
     </div>
     </div>
 

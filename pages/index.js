@@ -1,9 +1,7 @@
-
 import Head from 'next/head'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { BiWorld } from 'react-icons/bi';
+import Header from './Header'
 
 
 export default function Home({ continents }) {
@@ -13,32 +11,18 @@ export default function Home({ continents }) {
         <title>Continents</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-{/*       
-        <div className={styles.grid}>
-          {continents.map(continent => {
-            return (
-              <>
-              <Link href={`continent/${continent.code}`}>
-              <div>{continent.code} {continent.name}</div>
-              </Link>
-              <div>------</div>
-              </>
-            );
-          })}
-        </div> */}
-
-        <ul className="flex justify-around flex-wrap text-xl text-slate-200 mt-28">
-          {continents.map(continent => {
-            return (
-              <li className="my-9 mx-5 w-1/4">
-              <Link href={`continent/${continent.code}`} className="flex flex-row justify-center p-4 bg-gray-200 bg-slate-800 rounded-xl ">
-              <div>{continent.name}</div>
-              </Link>
-              </li>
-            );
-          })}
-        </ul>
+      <Header/>
+      <ul className="flex justify-around flex-wrap text-xl text-slate-200 mt-5">
+        {continents.map(continent => {
+          return (
+            <li className="my-9 mx-5 w-1/4">
+            <Link href={`continent/${continent.code}`} className="flex flex-row justify-center p-4 bg-gray-200 bg-slate-800 rounded-xl ">
+            <div>{continent.name}</div>
+            </Link>
+            </li>
+          );
+        })}
+      </ul>
 
     </div>
   )

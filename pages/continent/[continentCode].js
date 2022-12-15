@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
+import Header from '../Header'
+
 
 export default function Continents({ continent }) {
 
@@ -11,15 +13,14 @@ export default function Continents({ continent }) {
         <title>Countries</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-
-        <ul className="flex justify-between flex-wrap text-xl text-slate-200">
+      <Header/>
+        <ul className="flex justify-between flex-wrap text-xl text-slate-200 mt-5">
           {continent.countries.map(country => {
             return (
-              <li className="my-9 mx-5 w-1/4">
-              <Link href={`../country/${country.code}`} className="flex flex-row justify-center p-4 bg-gray-200 bg-slate-800 rounded-xl">
-              <div className="pr-5">{country.name}</div>
-              <div>{country.emoji}</div>
+              <li className="my-9 mx-5 w-1/5">
+              <Link href={`../country/${country.code}`} className="flex flex-row justify-center p-4 bg-slate-800 rounded-xl">
+              <div>{country.name}</div>
+              <div className="pl-3">{country.emoji}</div>
               </Link>
               </li>
             );
